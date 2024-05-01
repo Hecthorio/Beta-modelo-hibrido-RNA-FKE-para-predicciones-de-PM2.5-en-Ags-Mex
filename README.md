@@ -34,9 +34,9 @@ Para el diseño y entrenamiento del modelo se utilizo la libreria de Keras. Los 
 
 Los parametros de entrada al modelo son las variables temporales continuas: sin(hour), cos(hour), sin(dow), cos(dow), sin(doy) y cos(doy) y el estado previo del sistema (una hora antes): PM<sub>2.5</sub>(t-1); mientras que la salida del modelo es la concentración en la hora actual: PM<sub>2.5</sub>(t).
 
-Las metricas para medir el desempeño del modelo fueron el Error Cuadratico Medio, MSE (por sus siglas en inglés) y el coeficiente de determinación R$^2$
+Las metricas para medir el desempeño del modelo fueron el Error Cuadratico Medio, MSE (por sus siglas en inglés) y el coeficiente de determinación $\text{R}^2$
 
-$$\text{R}^2=1-\frac{\sum_{i=1}^{N}(y_{RNA,i}-y_i)^2}{\sum_{i=1}^{N}(\bar{y}-y_i)^2}$$
+$$\text{R}^2=1-\frac{\displaystyle\sum_{i=1}^{N}(y_{RNA,i}-y_i)^2}{\displaystyle\sum_{i=1}^{N}(\bar{y}-y_i)^2}$$
 
 $$$$
 
