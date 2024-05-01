@@ -7,10 +7,10 @@ Para el entrenamiento del modelo de RNA se utilizaron las bases de datos del Sis
 
 Los datos temporales se dividen en tres, hora del día, día de la semana (dow) y día del año (doy). Estos parámetros son variables discretas y periodicas, por lo que se aplicarion funciones seno y coseno para convertirlas a variables de tipo continuo. Esto ayuda al modelo a generar mejores pronosticos.
 
-\begin{equation}
+$$
 \sin{2\pi t/p}
 \cos{2\pi t/p}
-\end{equation}
+$$
 
 ## Entrenamiento del modelo
 Para el diseño y entrenamiento del modelo se utilizo la libreria de Keras. Los hiperparámetros del modelo propuesto se describen a continuación
