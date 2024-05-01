@@ -34,6 +34,12 @@ Para el diseño y entrenamiento del modelo se utilizo la libreria de Keras. Los 
 
 Los parametros de entrada al modelo son las variables temporales continuas: sin(hour), cos(hour), sin(dow), cos(dow), sin(doy) y cos(doy) y el estado previo del sistema (una hora antes): PM<sub>2.5</sub>(t-1); mientras que la salida del modelo es la concentración en la hora actual: PM<sub>2.5</sub>(t).
 
+Las metricas para medir el desempeño del modelo fueron el Error Cuadratico Medio, MSE (por sus siglas en inglés) y el coeficiente de determinación R$^2$
+
+$$\text{R}^2=1-\frac{\sum_{i=1}^{N}(y_{RNA,i}-y_i)^2}{\sum_{i=1}^{N}(\bar{y}-y_i)^2}$$
+
+$$$$
+
 ## Filtro de Kalman Extendido
 
 El algorimo de Filtro de Kalman es ampliamente usado para el seguimiento de señales y localización, navegación, control automatico, procesamiento de señales, economia y finanzas, etc. Para este analisis de procedio a utilizar la versión de Filtro de Kalman Extendido (FKE) para generar correcciones del modelo base que en este caso es un modelo de RNA feedforward. El algoritmo de FKE consta del siguiente sistema de ecuaciones y que se puede divivir en dos parte
