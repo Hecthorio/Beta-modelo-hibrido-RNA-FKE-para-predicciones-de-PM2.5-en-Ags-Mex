@@ -31,3 +31,15 @@ Para el diseño y entrenamiento del modelo se utilizo la libreria de Keras. Los 
 - **Datos entrenamiento, validación y prueba**: 80%-10%-10%
 - **Learning-rate** = 0.01
 - **Optimizador**: SGD
+
+## Filtro de Kalman Extendido
+
+El algorimo de Filtro de Kalman es ampliamente usado para el seguimiento de señales y localización, navegación, control automatico, procesamiento de señales, economia y finanzas, etc. Para este analisis de procedio a utilizar la versión de Filtro de Kalman Extendido (FKE) para generar correcciones del modelo base que en este caso es un modelo de RNA feedforward. El algoritmo de FKE consta del siguiente sistema de ecuaciones y que se puede divivir en dos parte
+
+### Predicción
+
+$$ x_k|_{k-1} = f(\hat{x}_{k-1|k-1},u_{k-1})$$
+
+## Acoplamiento del modelos
+
+# Resultados
