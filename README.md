@@ -46,7 +46,7 @@ $$P_k|_ {k-1}=F_{k-1}P_{k-1|k-1}F^T_{k-1}+Q_{k-1}$$
 
 $$K_k=P_{k|k-1}H^T_k(H_kP_{k|k-1}H^T_k+R_k)^{-1}$$
 
-$$\hat{x}_{k|k}=\hat{x}_{k|k-1}+K_k(z_k-h(\hat{x}_{k|k-1}))$$
+$$\hat{x}_ {k|k}=\hat{x}_ {k|k-1}+K_k(z_k-h(\hat{x}_{k|k-1}))$$
 
 $$P_{k|k}=(I-K_kH_k)P_{k|k-1}$$
 
