@@ -42,6 +42,15 @@ $$x_k|_ {k-1}=f(\hat{x}_ {k-1|k-1},u_{k-1})$$
 
 $$P_k|_ {k-1}=F_{k-1}P_{k-1|k-1}F^T_{k-1}+Q_{k-1}$$
 
+Donde:
+
+- $\hat{x}_{k|k-1}$ es la estimación del estado en el tiempo $k$ basada en la información del tiempo $k-1$.
+- $f$ es la función de transición de estado.
+- $u_{k-1}$ es la entrada en el tiempo $k-1$.
+- $F_{k-1}$ es la **matriz Jacobiana** de la función de transición de estados con respecto al estado en el tiempo $k-1$.
+- $P_{k-1|k-1}$ es la matriz de covarianza de la estimación del error en el tiempo $k-1$.
+- $Q_{k-1}$ es la matriz de covarianza del ruido del proceso en el tiempo $k-1$
+
 ### Corrección
 
 $$K_k=P_{k|k-1}H^T_k(H_kP_{k|k-1}H^T_k+R_k)^{-1}$$
