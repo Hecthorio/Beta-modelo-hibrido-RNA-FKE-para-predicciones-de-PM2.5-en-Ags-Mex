@@ -38,7 +38,7 @@ Las metricas para medir el desempeño del modelo fueron el Error Cuadratico Medi
 
 $$\text{R}^2=1-\frac{\displaystyle\sum_{i=1}^{N}(y_{RNA,i}-y_i)^2}{\displaystyle\sum_{i=1}^{N}(\bar{y}-y_i)^2}$$
 
-$$$$
+$$\text{MSE}=\frac{1}{N}\sum_{i=1}^{N}(y_{RNA,i}-y_i)^2$$
 
 ## Filtro de Kalman Extendido
 
