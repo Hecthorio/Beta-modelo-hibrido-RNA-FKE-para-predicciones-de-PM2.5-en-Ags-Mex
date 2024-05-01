@@ -59,6 +59,15 @@ $$\hat{x}_ {k|k}=\hat{x}_ {k|k-1}+K_k(z_k-h(\hat{x}_{k|k-1}))$$
 
 $$P_{k|k}=(I-K_kH_k)P_{k|k-1}$$
 
+Donde:
+
+- $K_k$ es la ganancia del FKE.
+- $H_k$ es la **matriz Jacobiana** de la función de medición en el tiempo $k$.
+- $z_k$ es la medición en el tiempo $k$.
+- $h$ es la función que relaciona el estado estimado con la medición.
+- $R_k$ es la matriz de covarianza del ruido de medición en el tiempo $k$.
+- $I$ es la matriz identidad.
+
 ## Acoplamiento del modelos
 
 # Resultados
