@@ -40,6 +40,8 @@ El algorimo de Filtro de Kalman es ampliamente usado para el seguimiento de señ
 
 $$x_k|_ {k-1}=f(\hat{x}_ {k-1|k-1},u_{k-1})$$
 
+$$P_k|_ {k-1}=F_{k-1}P_{k-1|k-1}F^T_{k-1}+Q_{k-1}$$
+
 ## Acoplamiento del modelos
 
 # Resultados
