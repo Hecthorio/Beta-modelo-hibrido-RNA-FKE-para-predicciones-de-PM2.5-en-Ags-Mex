@@ -40,6 +40,8 @@ $$\text{R}^2=1-\frac{\displaystyle\sum_{i=1}^{N}(y_{RNA,i}-y_i)^2}{\displaystyle
 
 $$\text{MSE}=\frac{1}{N}\sum_{i=1}^{N}(y_{RNA,i}-y_i)^2$$
 
+Donde $y_{RNA,i}$ es la salida $i$ del modelo de RNA, $y_i$ es el dato real $i$, $\bar{y}$ es el promedio de todas las observaciones reales y $N$ es el número de datos observados.
+
 ## Filtro de Kalman Extendido
 
 El algorimo de Filtro de Kalman es ampliamente usado para el seguimiento de señales y localización, navegación, control automatico, procesamiento de señales, economia y finanzas, etc. Para este analisis de procedio a utilizar la versión de Filtro de Kalman Extendido (FKE) para generar correcciones del modelo base que en este caso es un modelo de RNA feedforward. El algoritmo de FKE consta del siguiente sistema de ecuaciones y que se puede divivir en dos parte
