@@ -38,7 +38,7 @@ El algorimo de Filtro de Kalman es ampliamente usado para el seguimiento de señ
 
 ### Predicción
 
-$$ x_k|_{k-1} = f(\hat{x}_{k-1|k-1},u_{k-1})$$
+$$x_k|_ {k-1}=f(\hat{x}_ {k-1|k-1},u_{k-1})$$
 
 ## Acoplamiento del modelos
 
