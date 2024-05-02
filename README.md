@@ -157,7 +157,7 @@ Por último, el algoritmo de FKE, por su naturaleza, genera un aumento en la aut
 Por último se analiza la distribución de la salida de los modelos con respecto a los datos de prueba. Se encontró que el modelo RNA-FKE en todas las caracteristicas se acerca más a los datos reales que el modelo regular.
 
 <p align="center">
-  <img src = "histograma_modelos.png" width="400">
+  <img src = "imagenes/histograma_modelos.png" width="400">
 </p>
 
 |Modelo |Media  |Desviación estandar|Oblicuidad|Curtosis|
