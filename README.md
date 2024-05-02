@@ -168,7 +168,7 @@ Por último se analiza la distribución de la salida de los modelos con respecto
 
 # Conclusión
 
-El acoplamiento del algorimo de FKE a un modelo de RNA mejoró en casi el doble el desempeño del modelo. Aunque hay que señalar que el modelo hibrido no es perfecto
+El acoplamiento del algorimo de FKE a un modelo de RNA mejoró en casi el doble el desempeño del modelo. Aunque hay que señalar que el modelo hibrido no es perfecto, ya que suele presentar oscilaciones en algunas ocasiones, pero esto se puede corregir modificando los parámetros internos del FKE. Esto puede llevarse a cabo mediante alguna tecnica de busqueda de parámetros que minimice los residuales del modelo hibirido.
 
 ### Notas
 - Los resultados obtenidos al correr el modelo puede variar un poco a los mostrados, ya que la semilla de números aleatoreos no está definida en el script.
