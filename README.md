@@ -94,6 +94,82 @@ $$\frac{\partial f}{\partial \hat{x}_ {k|k-1}} \approx \frac{f(\hat{x}_{k|k-1}+\
 
 La base de datos original constaba de 7520 y después del filtrado 6433, elimnando un total de 1087 datos. Estos datos eran registros con concentraciones negativas, principalmente. 
 
-Las concentraciones más altas se suelen presentar durante la mañana, alrededor de las 10:00 horas y las menores a las 16:00 horas. Aunque la mayoria de los eventos donde la concentración suele dispararse ocurren durante la madrugada; estos valores sobresalen de los valores maximos evaluados con las distancias intercuartiles.
+Las concentraciones más altas se suelen presentar durante la mañana, alrededor de las 10:00 horas y las menores a las 16:00 horas. Aunque la mayoria de los eventos donde la concentración suele dispararse ocurren durante la madrugada; estos valores sobresalen de los valores maximos evaluados con las distancias intercuartiles. Otro detalle a resaltar es que el histograma de la concentración de PM<sub>2.5</sub> no muestra un comportamiento normal, esto es comprobado por la prueba de Shapiro, obteniendo un p-valor = 0.0.
 
-<center><img src = "imagenes/boxplot.jpg" width="400"  alt="centered image" /></center>
+<p align="center">
+  <img src = "imagenes/boxplot.jpg" width="400">
+  <img src = "imagenes/histograma.jpg" width="400">
+</p>
+
+## Variables temporales discretas a continuas
+
+La conversión de los parámetros temporales se muestra en las siguientes figuras. Las figuras de hora del día y día de la semana solo muestran una porcion de los datos empleados (la grafica se satura si se muestran todos) pero la figura de día del año utiliza toda la información; en ella se pueden apreciar los saltos temporales generados por el filtrado de los datos. Con este tratamiento previo de los datos el modelo no generará saltos abrutos en el tiempo una vez que se requiera repetir un periodo en el tiempo, dandole estabilidad al modelo final.
+
+<p align="center">
+  <img src = "imagenes/sin_cos_hour.jpg" width="300">
+  <img src = "imagenes/sin_cos_dow.jpg" width="300">
+  <img src = "imagenes/sin_cos_doy.jpg" width="300">
+</p>
+
+## Entrenamiento y evaluación del modelo RNA-FKE
+
+La función de perdida dismuye durante el entranamiento del modelo, señalando que los parámetros se ajustaron de manera adecuada a los datos de entrenamiento, por otro lado se mantiene casi constante (ligera disminución) para los datos de evaluación, por lo que se puede descartar sobre entrenamiento del modelo.
+
+Los resultados de la evaluación del modelo en solitario y con el FKE se muestran en la figura de la izquierda (solo una porción de los datos de prueba). Se puede apreciar que ambos modelos siguen muy de cerca a los datos de prueba pero el modelo de RNA-FKE tiene un mejor desempeño; se concluye esto por el valor obtenido de $\text{R}^2$ con respecto al modelo en solitario. Otra metrica evaluada fue el MSE, obteniendo $\text{MSE}_ {RNA}=44.92$ y $\text{MSE}_{RNA-FKE}=16.39$. Por otro lado, hay que señalar que el modelo tiene algunos problemas de osculaciones en algunos momentos
+
+<p align="center">
+  <img src = "imagenes/evaluacion.jpg" width="400">
+  <img src = "imagenes/perdida.jpg" width="400">
+</p>
+
+Los parámetros empleados para el FKE fueron $R_k=0.001$, $P_{k-1|k-1}=0.5$ y $Q_{k-1}=0.1$. La ganancia de Kalman y la covarianza del error durante la evaluación se muestra a continuación:
+
+<p align="center">
+  <img src = "imagenes/covarianza.jpg" width="400">
+  <img src = "imagenes/ganancia.jpg" width="400">
+</p>
+
+## Residuales de los datos de prueba aplicados a los modelos
+
+La grafica de los residuales estandarizados contra la salida del modelo muestran una distrubición más uniforme cuando se emplea el FKE. La prueba de Breusch-Pagan mostro un p-valor $=1.207\times 10^{-42}$ para el modelo RNA y p-valor $=2.971\times 10^{-22}$ para el modelo RNA-FKE, estos valores aunque no son mayores al nivel de significancia ($\alpha = 0.05$), indican una mayor distribución de los residuales en el segundo modelo.
+
+<p align="center">
+  <img src = "imagenes/Residuales_rna.jpg" width="400">
+  <img src = "imagenes/Residuales_rnafke.jpg" width="400">
+</p>
+
+El histograma de los residuales estandarizados, de manera analoga a las Figuras anteriores, muestra una mejor distribución del error alredeor de la media cero; sin sesgo como el modelo RNA.
+
+<p align="center">
+  <img src = "imagenes/hist_Residuales_rna.jpg" width="400">
+  <img src = "imagenes/hist_Residuales_rnafke.jpg" width="400">
+</p>
+
+Por último, el algoritmo de FKE, por su naturaleza, genera un aumento en la auto correlación parcial del error, esto se puede apreciar en las graficas de la Función de Auto Correlación Parcial, PACF por sus siglas en inglés. Una auto correlación del error alta podria indicar falta de información en el modelo y por tanto bajo desempeño, pero esto no ocurre con el modelo de RNA-FKE, por lo que estos resultados son resultado indirecto de la aplicación del algoritmo y no serian un indicativo de mal desempeño del modelo.
+
+<p align="center">
+  <img src = "imagenes/pacf_rna.jpg" width="400">
+  <img src = "imagenes/pacf_rnafke.jpg" width="400">
+</p>
+
+## Distribución de las respuestas de los modelos
+
+Por último se analiza la distribución de la salida de los modelos con respecto a los datos de prueba. Se encontró que el modelo RNA-FKE en todas las caracteristicas se acerca más a los datos reales que el modelo regular.
+
+<p align="center">
+  <img src = "histograma_modelos.png" width="400">
+</p>
+
+|Modelo |Media  |Desviación estandar|Oblicuidad|Curtosis|
+|:-----:|:-----:|:-----------------:|:--------:|:------:|
+|Real   |13.169 |8.625              |2.417     |12.567  |
+|RNA    |13.812 |6.034              |0.919     |2.988   |
+|RNA-FKE|13.011 |8.555              |2.738     |17.750  |
+
+# Conclusión
+
+El acoplamiento del algorimo de FKE a un modelo de RNA mejoró en casi el doble el desempeño del modelo. Aunque hay que señalar que el modelo hibrido no es perfecto
+
+### Notas
+- Los resultados obtenidos al correr el modelo puede variar un poco a los mostrados, ya que la semilla de números aleatoreos no está definida en el script.
+- Si se va a correr el script asegurarse de modificar la ruta de lectura de la base de datos y donde
