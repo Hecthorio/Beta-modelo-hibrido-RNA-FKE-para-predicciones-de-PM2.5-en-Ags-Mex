@@ -172,4 +172,12 @@ El acoplamiento del algorimo de FKE a un modelo de RNA mejoró en casi el doble 
 
 ### Notas
 - Los resultados obtenidos al correr el modelo puede variar un poco a los mostrados, ya que la semilla de números aleatoreos no está definida en el script.
-- Si se va a correr el script asegurarse de modificar la ruta de lectura de la base de datos y donde
+- Si se va a correr el script asegurarse de modificar la ruta de lectura de la base de datos y donde se guardaran las imagenes generadas
+```python
+ruta = 'C:/Users/Hector/OneDrive/Documentos/ITA/amidiq 2024/codigos/'
+```
+- Asegurarse de tener instaladas las librerias de Keras para el diseño y evaluación del modelo de RNA, Pandas y sklearn para el preprocesamiento de los datos, numpy para el manejo de matrices, matplotlib y seaborn para las figuras, entre otras... Recordar que para instalar se puede usar ```pip install```
+```python
+pip install Keras
+```
+  
