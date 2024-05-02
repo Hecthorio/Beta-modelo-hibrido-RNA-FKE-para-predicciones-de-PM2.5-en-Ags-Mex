@@ -48,7 +48,7 @@ El algorimo de Filtro de Kalman es ampliamente usado para el seguimiento de señ
 
 ### Predicción
 
-$$x_k|_ {k-1}=f(\hat{x}_ {k-1|k-1},u_{k-1})$$
+$$\hat{x}_ k|_ {k-1}=f(\hat{x}_ {k-1|k-1},u_{k-1})$$
 
 $$P_k|_ {k-1}=F_{k-1}P_{k-1|k-1}F^T_{k-1}+Q_{k-1}$$
 
@@ -80,6 +80,20 @@ Donde:
 
 ## Acoplamiento del modelos
 
-<img src = "imagenes/algortimo.png">
+El acomplamiento del modelo de RNA con el FKE funciona de la siguiente manera. Una vez entrenado el modelo y definidos los parámetros del FKE el modelo de RNA es evaluado y la salida define como la función de transición de estados ($f$), después se calcula la matriz de covarianza del error ($P_{k|k-1}$); termina la etapa de evaluación. Despues se computa la ganancia de Kalman ($K_k$) para evaluar la corrección de la estimación $\hat{x}_{k|k}$ utilizando la salida de la RNA $\hat{x} _{k|k-1}$ y la ganancia de Kalman previamente calculada, la medición real ($z_k$) y la función que relaciona el estado estimado con la medición ($h$). Aquí hay que resaltar que la función $h$ se definio como una función identidad para este algoritmo, por lo que $h=\hat{x} _{k|k-1}$. El último paso del proceso corrección es la re evaluación de la matriz de covarianza. Por último la corrección $\hat{x} _{k|k}$ es retro alimentada como entrada al modelo de RNA. El proceso se repite N veces, donde N es el número de registros en el tiempo.
+
+<img src = "imagenes/algoritmo.png" />
+
+La evaluación de las matrices Jacobianas se lleva a cabo mediate la aproximación hacia adelante de una derivada numerica.
+
+$$\frac{\partial f}{\partial \hat{x}_ {k|k-1}} \approx \frac{f(\hat{x}_{k|k-1}+\Delta x)-f(\hat{x} _{k|k-1})}{\Delta x}$$
 
 # Resultados
+
+## Analsis exploratorio
+
+La base de datos original constaba de 7520 y después del filtrado 6433, elimnando un total de 1087 datos. Estos datos eran registros con concentraciones negativas, principalmente. 
+
+Las concentraciones más altas se suelen presentar durante la mañana, alrededor de las 10:00 horas y las menores a las 16:00 horas. Aunque la mayoria de los eventos donde la concentración suele dispararse ocurren durante la madrugada; estos valores sobresalen de los valores maximos evaluados con las distancias intercuartiles.
+
+<img src = "imagenes/boxplot.pdf" />
