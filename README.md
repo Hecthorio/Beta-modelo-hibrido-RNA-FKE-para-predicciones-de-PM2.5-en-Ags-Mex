@@ -96,4 +96,4 @@ La base de datos original constaba de 7520 y después del filtrado 6433, elimnan
 
 Las concentraciones más altas se suelen presentar durante la mañana, alrededor de las 10:00 horas y las menores a las 16:00 horas. Aunque la mayoria de los eventos donde la concentración suele dispararse ocurren durante la madrugada; estos valores sobresalen de los valores maximos evaluados con las distancias intercuartiles.
 
-<img src = "imagenes/boxplot.pdf" />
+<center><img src = "imagenes/boxplot.jpg" width="400"  alt="centered image" /></center>
