@@ -80,6 +80,6 @@ Donde:
 
 ## Acoplamiento del modelos
 
-
+<img src = "imagenes/algortimo.png">
 
 # Resultados
